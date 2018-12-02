@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import axios from "axios";
-// import { getTheme } from "react-native-material-kit";
 
 class User extends Component {
   render() {
@@ -37,15 +36,9 @@ export default class App extends Component {
         <FlatList
           style={{ width: "100%" }}
           data={this.state.users}
+          keyExtractor={(item, index) => item.id.toString()}
           renderItem={({ item }) => {
-            return (
-              <View style={styles.userList}>
-                <Text style={styles.userName}>
-                  {item.first_name} {item.last_name}
-                </Text>
-                <Text>{item.email}</Text>
-              </View>
-            );
+            return <User user={item} />;
           }}
         />
       </View>
@@ -56,6 +49,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 50,
+    marginBottom: 25,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
