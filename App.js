@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
+import { ListItem } from "react-native-elements";
 import axios from "axios";
 
 class User extends Component {
   render() {
+    const fullName = this.props.user.first_name + " " + this.props.user.last_name;
     return (
-      <View>
-        <Text>
-          {this.props.user.first_name} {this.props.user.last_name}
-        </Text>
-        <Text>{this.props.user.email}</Text>
-      </View>
+      /* {<View>
+          <Text>
+            {this.props.user.first_name} {this.props.user.last_name}
+          </Text>
+          <Text>{this.props.user.email}</Text>
+        </View>} */
+
+      <ListItem key={this.props.user.id} title={fullName} />
     );
   }
 }
