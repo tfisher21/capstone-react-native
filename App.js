@@ -22,6 +22,14 @@ class LoginScreen extends Component {
           placeholderColor="gray"
           style={{ borderBottomWidth: 1 }}
         />
+        <TextInput
+          onChangeText={password => this.setState({ password })}
+          value={this.state.password}
+          placeholder="password"
+          secureTextEntry={true}
+          placeholderColor="gray"
+          style={{ borderBottomWidth: 1 }}
+        />
       </View>
     );
   }
