@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Text, View, TextInput } from "react-native";
+import { View } from "react-native";
+import { Text, Input } from "react-native-elements";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import axios from "axios";
 
@@ -11,25 +12,17 @@ class LoginScreen extends Component {
       password: ""
     };
   }
+
   render() {
+    function onPressLearnMore() {
+      console.log("Button Pressed");
+    }
+
     return (
       <View>
-        <Text>Login to Actualize.Social</Text>
-        <TextInput
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-          placeholder="email"
-          placeholderColor="gray"
-          style={{ borderBottomWidth: 1 }}
-        />
-        <TextInput
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-          placeholder="password"
-          secureTextEntry={true}
-          placeholderColor="gray"
-          style={{ borderBottomWidth: 1 }}
-        />
+        <Text h4>Login to Actualize.Social</Text>
+        <Input placeholder="email" />
+        <Input placeholder="password" />
       </View>
     );
   }
