@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
+import { withNavigation } from "react-navigation";
 import styles from "./StyleSheet.js";
 
-export default class Post extends Component {
+class Post extends Component {
   render() {
     return (
       <Card
@@ -23,11 +24,15 @@ export default class Post extends Component {
           title={
             "Comments (" + this.props.post.comments.length.toString() + ")"
           }
-          onClick={this.props.navigation.navigate("PostShow", {
-            postId: this.props.post.post_id
-          })}
+          onPress={() => {
+            this.props.navigation.navigate("PostShow", {
+              postId: this.props.post.id
+            });
+          }}
         />
       </Card>
     );
   }
 }
+
+export default withNavigation(Post);

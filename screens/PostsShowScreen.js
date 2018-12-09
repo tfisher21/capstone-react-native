@@ -26,11 +26,7 @@ export default class Posts extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Card
-          title={this.state.post.title}
-          image={require("../assets/jsheader.jpg")}
-        />
-        <Text style={{ marginBottom: 10 }}>{this.state.post.content}</Text>
+        <Text>Test</Text>
       </View>
     );
   }

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { FlatList, View, Text, Image } from "react-native";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
+import { withNavigation } from "react-navigation";
 import axios from "axios";
 import styles from "../components/StyleSheet";
 import Post from "../components/ListPost";
 
-export default class Posts extends Component {
+class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,3 +36,5 @@ export default class Posts extends Component {
     );
   }
 }
+
+export default withNavigation(Posts);

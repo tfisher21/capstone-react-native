@@ -8,17 +8,17 @@ import axios from "axios";
 import Users from "./screens/UsersScreen";
 import LoginScreen from "./screens/LoginScreen";
 import Posts from "./screens/PostsScreen";
-import PostsShow from "./screens/PostsShowScreen";
+import PostShow from "./screens/PostsShowScreen";
 
-const PostsStack = createSwitchNavigator({
+const PostsStack = createStackNavigator({
   PostIndex: Posts,
-  PostShow: PostsShow
+  PostShow: PostShow
 });
 
 const AuthStack = createStackNavigator({ Login: LoginScreen });
 
 const AppStack = createBottomTabNavigator({
-  Posts: Posts,
+  Posts: PostsStack,
   Users: Users
 });
 
