@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { ListItem } from "react-native-elements";
+import styles from "./StyleSheet.js";
 
 export default class User extends Component {
   render() {
@@ -17,20 +18,3 @@ export default class User extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 50,
-    marginBottom: 25,
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  userList: {
-    borderColor: "#000",
-    borderStyle: "solid",
-    borderWidth: 1
-  },
-  userName: {}
-});
