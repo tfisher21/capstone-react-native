@@ -47,14 +47,14 @@ class LoginScreen extends Component {
           placeholder="email"
           autoCapitalize="none"
           onChangeText={email => this.setState({ email })}
-          valuse={this.state.email}
+          value={this.state.email}
         />
         <Input
           placeholder="password"
           autoCapitalize="none"
           secureTextEntry={true}
           onChangeText={password => this.setState({ password })}
-          valuse={this.state.password}
+          value={this.state.password}
         />
         <Button
           title="Login"
