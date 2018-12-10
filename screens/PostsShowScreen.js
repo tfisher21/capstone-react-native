@@ -16,7 +16,7 @@ class PostShow extends Component {
 
   componentDidMount() {
     const postId = this.props.navigation.getParam("postId");
-    const request = "http://localhost:3000/api/posts/" + postId;
+    const request = "http://capstone.tyler.fish/api/posts/" + postId;
     axios.get(request).then(response => {
       const postData = response.data;
       this.setState({ post: postData });

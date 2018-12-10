@@ -26,7 +26,7 @@ class LoginScreen extends Component {
       password: this.state.password
     };
     axios
-      .post("http://localhost:3000/api/sessions", params)
+      .post("http://capstone.tyler.fish/api/sessions", params)
       .then(response => {
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + response.data.jwt;

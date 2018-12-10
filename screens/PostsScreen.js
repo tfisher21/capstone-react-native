@@ -15,7 +15,7 @@ class Posts extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/api/posts").then(response => {
+    axios.get("http://capstone.tyler.fish/api/posts").then(response => {
       const postsData = response.data;
       this.setState({ posts: postsData });
     });
