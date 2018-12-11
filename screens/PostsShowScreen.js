@@ -40,12 +40,33 @@ class PostShow extends Component {
           source={require("../assets/jsheader.jpg")}
           style={{ height: imageHeight, width: imageWidth }}
         />
-        <View style={{ backgroundColor: "white" }}>
-          <Text h1>{this.state.post.title}</Text>
-        </View>
         <View>
+          <ListItem
+            title={this.state.post.title}
+            rightElement={
+              <Icon
+                raised
+                name="message"
+                type="entypo"
+                //onPress={() => }
+              />
+            }
+          />
+        </View>
+        <View style={{ borderBottomWidth: "1px", borderBottomColor: "gray" }}>
           <Text style={{ color: "gray" }}>{this.state.post.user}</Text>
           <Text>{this.state.post.content}</Text>
+        </View>
+        <View>
+          <Text h3>Comments</Text>
+          <FlatList
+            data={this.state.post.comments}
+            keyExtractor={(item, index) => item.id.toString()}
+            renderItem={({ item }) => {
+              console.log(item);
+              return <ListItem title={item.content} bottomDivider={true} />;
+            }}
+          />
         </View>
       </ScrollView>
     );
