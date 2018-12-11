@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { FlatList, View, Text, Image } from "react-native";
-import { Card, ListItem, Button, Icon } from "react-native-elements";
+import { FlatList, ScrollView, View, Text, Image } from "react-native";
+import { Card, ListItem, Button, Icon, Tile } from "react-native-elements";
 import { withNavigation } from "react-navigation";
 import axios from "axios";
 import styles from "../components/StyleSheet";
@@ -25,14 +25,23 @@ class PostShow extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Image
-          source={require("../assets/jsheader.jpg")}
-          style={{ flex: 1, alignItems: "baseline" }}
-          resizeMode="contain"
-        />
-        <Text>{this.state.post.title}</Text>
-      </View>
+      <Tile
+        imageSrc={require("../assets/jsheader.jpg")}
+        title={this.state.post.title}
+        titleStyle={{ textAlign: "center" }}
+        contentContainerStyle={{ height: "70%" }}
+        containerStyle={{ height: "100%" }}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-start"
+          }}
+        >
+          <Text style={{ color: "gray" }}>{this.state.post.user}</Text>
+          <Text>Caption</Text>
+        </View>
+      </Tile>
     );
   }
 }

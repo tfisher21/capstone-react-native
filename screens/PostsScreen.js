@@ -23,7 +23,7 @@ class Posts extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <FlatList
           style={{ width: "100%" }}
           data={this.state.posts}

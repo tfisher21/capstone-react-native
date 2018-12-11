@@ -6,14 +6,19 @@ import styles from "./StyleSheet.js";
 
 class Post extends Component {
   render() {
+    let content = this.props.post.content;
+    if (content.length > 80) {
+      content = content.slice(0, 77) + "...";
+    }
     return (
       <Card
         title={this.props.post.title}
         image={require("../assets/jsheader.jpg")}
       >
-        <Text style={{ marginBottom: 10 }}>{this.props.post.content}</Text>
+        <Text style={{ marginBottom: 10 }}>{content}</Text>
         <Button
           icon={<Icon name="list" color="#ffffff" />}
+          iconRight={true}
           backgroundColor="#03A9F4"
           buttonStyle={{
             borderRadius: 0,
@@ -22,7 +27,9 @@ class Post extends Component {
             marginBottom: 0
           }}
           title={
-            "Comments (" + this.props.post.comments.length.toString() + ")"
+            "Full Post + Comments (" +
+            this.props.post.comments.length.toString() +
+            ")"
           }
           onPress={() => {
             this.props.navigation.navigate("PostShow", {

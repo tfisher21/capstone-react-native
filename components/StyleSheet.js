@@ -13,6 +13,5 @@ export default StyleSheet.create({
     borderColor: "#000",
     borderStyle: "solid",
     borderWidth: 1
-  },
-  userName: {}
+  }
 });
