@@ -1,6 +1,13 @@
 import React, { Component } from "react";
-import { FlatList, ScrollView, View, Text, Image } from "react-native";
-import { Card, ListItem, Button, Icon, Tile } from "react-native-elements";
+import { Dimensions, FlatList, ScrollView, View, Image } from "react-native";
+import {
+  Card,
+  Text,
+  ListItem,
+  Button,
+  Icon,
+  Tile
+} from "react-native-elements";
 import { withNavigation } from "react-navigation";
 import axios from "axios";
 import styles from "../components/StyleSheet";
@@ -24,24 +31,23 @@ class PostShow extends Component {
   }
 
   render() {
+    const dimensions = Dimensions.get("window");
+    const imageHeight = Math.round((dimensions.width * 9) / 16);
+    const imageWidth = dimensions.width;
     return (
-      <Tile
-        imageSrc={require("../assets/jsheader.jpg")}
-        title={this.state.post.title}
-        titleStyle={{ textAlign: "center" }}
-        contentContainerStyle={{ height: "70%" }}
-        containerStyle={{ height: "100%" }}
-      >
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "flex-start"
-          }}
-        >
-          <Text style={{ color: "gray" }}>{this.state.post.user}</Text>
-          <Text>Caption</Text>
+      <ScrollView stickyHeaderIndices={[1]}>
+        <Image
+          source={require("../assets/jsheader.jpg")}
+          style={{ height: imageHeight, width: imageWidth }}
+        />
+        <View style={{ backgroundColor: "white" }}>
+          <Text h1>{this.state.post.title}</Text>
         </View>
-      </Tile>
+        <View>
+          <Text style={{ color: "gray" }}>{this.state.post.user}</Text>
+          <Text>{this.state.post.content}</Text>
+        </View>
+      </ScrollView>
     );
   }
 }
