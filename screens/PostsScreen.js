@@ -39,7 +39,7 @@ class Posts extends Component {
           onPress={() => {
             this.props.navigation.navigate("PostCreate");
           }}
-          containerStyle={{ alignSelf: "flex-end" }}
+          containerStyle={{ position: "absolute", bottom: 0, right: 0 }}
         />
       </View>
     );
