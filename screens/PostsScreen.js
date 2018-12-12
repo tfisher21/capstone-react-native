@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { FlatList, View, Text, Image } from "react-native";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
-import { withNavigation } from "react-navigation";
 import axios from "axios";
 import styles from "../components/StyleSheet";
 import Post from "../components/ListPost";
@@ -23,7 +22,17 @@ class Posts extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
+        <Icon
+          raised
+          name="edit"
+          iconStyle={{ textAlign: "right" }}
+          type="entypo"
+          onPress={() => {
+            this.props.navigation.navigate("PostCreate");
+          }}
+          containerStyle={{ alignSelf: "flex-end" }}
+        />
         <FlatList
           style={{ width: "100%" }}
           data={this.state.posts}
@@ -37,4 +46,4 @@ class Posts extends Component {
   }
 }
 
-export default withNavigation(Posts);
+export default Posts;
