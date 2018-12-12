@@ -23,6 +23,14 @@ class Posts extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <FlatList
+          style={{ width: "100%" }}
+          data={this.state.posts}
+          keyExtractor={(item, index) => item.id.toString()}
+          renderItem={({ item }) => {
+            return <Post post={item} />;
+          }}
+        />
         <Icon
           raised
           name="edit"
@@ -32,14 +40,6 @@ class Posts extends Component {
             this.props.navigation.navigate("PostCreate");
           }}
           containerStyle={{ alignSelf: "flex-end" }}
-        />
-        <FlatList
-          style={{ width: "100%" }}
-          data={this.state.posts}
-          keyExtractor={(item, index) => item.id.toString()}
-          renderItem={({ item }) => {
-            return <Post post={item} />;
-          }}
         />
       </View>
     );
