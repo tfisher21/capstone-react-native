@@ -34,6 +34,7 @@ class PostShow extends Component {
     const dimensions = Dimensions.get("window");
     const imageHeight = Math.round((dimensions.width * 9) / 16);
     const imageWidth = dimensions.width;
+
     return (
       <ScrollView stickyHeaderIndices={[1]}>
         <Image
@@ -43,6 +44,9 @@ class PostShow extends Component {
         <View>
           <ListItem
             title={this.state.post.title}
+            titleStyle={{ fontSize: 28 }}
+            subtitle={this.state.post.user}
+            subtitleStyle={{ color: "gray" }}
             rightElement={
               <Icon
                 raised
@@ -54,16 +58,14 @@ class PostShow extends Component {
           />
         </View>
         <View style={{ borderBottomWidth: "1px", borderBottomColor: "gray" }}>
-          <Text style={{ color: "gray" }}>{this.state.post.user}</Text>
           <Text>{this.state.post.content}</Text>
         </View>
-        <View>
-          <Text h3>Comments</Text>
+        <View style={{ marginLeft }}>
+          <Text h4>Comments </Text>
           <FlatList
             data={this.state.post.comments}
             keyExtractor={(item, index) => item.id.toString()}
             renderItem={({ item }) => {
-              console.log(item);
               return <ListItem title={item.content} bottomDivider={true} />;
             }}
           />
