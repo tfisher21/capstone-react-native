@@ -10,6 +10,7 @@ import {
 } from "react-native-elements";
 import { withNavigation } from "react-navigation";
 import axios from "axios";
+import moment from "moment";
 import styles from "../components/StyleSheet";
 import Post from "../components/ListPost";
 
@@ -57,16 +58,37 @@ class PostShow extends Component {
             }
           />
         </View>
-        <View style={{ borderBottomWidth: "1px", borderBottomColor: "gray" }}>
+        <View
+          style={{
+            borderBottomWidth: "1px",
+            borderBottomColor: "gray",
+            paddingLeft: "3%",
+            paddingRight: "3%",
+            paddingBottom: "1%"
+          }}
+        >
           <Text>{this.state.post.content}</Text>
         </View>
-        <View style={{ marginLeft }}>
-          <Text h4>Comments </Text>
+        <View>
+          <Text style={{ paddingLeft: "3%" }} h4>
+            Comments{" "}
+          </Text>
           <FlatList
             data={this.state.post.comments}
             keyExtractor={(item, index) => item.id.toString()}
             renderItem={({ item }) => {
-              return <ListItem title={item.content} bottomDivider={true} />;
+              const commentCreatedAt = moment(item.created_at);
+              const commentCAFormat = commentCreatedAt.format(
+                "YYYY-MM-DD hh:mm a"
+              );
+              return (
+                <ListItem
+                  title={item.content}
+                  subtitle={item.author + "\n" + commentCAFormat}
+                  subtitleStyle={{ color: "gray", textAlign: "right" }}
+                  bottomDivider={true}
+                />
+              );
             }}
           />
         </View>
