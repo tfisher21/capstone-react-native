@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-import { FlatList, View, Text, Image } from "react-native";
+import { FlatList, ScrollView, View, Text, Image } from "react-native";
 import { withNavigation } from "react-navigation";
-import { Card, ListItem, Button, Icon } from "react-native-elements";
+import {
+  Card,
+  ListItem,
+  Button,
+  Icon,
+  ButtonGroup
+} from "react-native-elements";
 import axios from "axios";
 import styles from "../components/StyleSheet";
 import Post from "../components/ListPost";
@@ -10,15 +16,41 @@ class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      selectedIndex: 0,
+      allPosts: [],
+      cohortPosts: [],
+      cohortView: true,
+      cohortPostsCount: null,
+      allPostsCount: null
     };
+    this.updateIndex = this.updateIndex.bind(this);
   }
 
   componentDidMount() {
     axios.get("http://capstone.tyler.fish/api/posts").then(response => {
       const postsData = response.data;
-      this.setState({ posts: postsData });
+      this.setState({
+        allPosts: postsData,
+        allPostsCount: response.data.length
+      });
+
+      axios
+        .get("http://capstone.tyler.fish/api/posts", {
+          params: {
+            sort_by_cohort: true
+          }
+        })
+        .then(response => {
+          this.setState({
+            cohortPosts: response.data,
+            cohortPostsCount: response.data.length
+          });
+        });
     });
+  }
+
+  updateIndex(selectedIndex) {
+    this.setState({ selectedIndex });
   }
 
   render() {
@@ -26,15 +58,50 @@ class Posts extends Component {
     if (newPost) {
       axios.get("http://capstone.tyler.fish/api/posts").then(response => {
         const postsData = response.data;
-        this.setState({ posts: postsData });
+        this.setState({
+          allPosts: postsData,
+          allPostsCount: response.data.length
+        });
+
+        axios
+          .get("http://capstone.tyler.fish/api/posts", {
+            params: {
+              sort_by_cohort: true
+            }
+          })
+          .then(response => {
+            this.setState({
+              cohortPosts: response.data,
+              cohortPostsCount: response.data.length
+            });
+          });
       });
     }
+
+    const buttons = [
+      "Cohort Posts (" + this.state.cohortPostsCount + ")",
+      "All Posts (" + this.state.allPostsCount + ")"
+    ];
+    const { selectedIndex } = this.state;
+
+    let postView = this.state.cohortPosts;
+    if (this.state.selectedIndex === 1) {
+      postView = this.state.allPosts;
+    }
+
     return (
       <View style={{ flex: 1 }}>
-        <Text>{newPost}</Text>
+        <ButtonGroup
+          onPress={this.updateIndex}
+          selectedIndex={selectedIndex}
+          buttons={buttons}
+          buttonStyle={{ borderRadius: 20 }}
+          containerStyle={{ borderWidth: 0 }}
+          innerBorderStyle={{ width: 0 }}
+        />
         <FlatList
           style={{ width: "100%" }}
-          data={this.state.posts}
+          data={postView}
           keyExtractor={(item, index) => item.id.toString()}
           renderItem={({ item }) => {
             return <Post post={item} />;
