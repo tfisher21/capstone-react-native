@@ -20,20 +20,20 @@ class PostCreate extends Component {
     super(props);
     this.state = {
       content: "",
-      title: ""
+      title: "",
+      errors: ""
     };
   }
 
-  loginUser() {
+  publishPost() {
     var params = {
       title: this.state.title,
       content: this.state.content
     };
     axios
-      .post("http://capstone.tyler.fish/api/posts/create", params)
+      .post("http://capstone.tyler.fish/api/posts", params)
       .then(response => {
-        axios.defaults.headers.common["Authorization"] =
-          "Bearer " + response.data.jwt;
+        this.props.navigation.navigate("PostIndex", { newPost: true });
       })
       .catch(errors => {
         console.log(errors.message);
@@ -78,6 +78,7 @@ class PostCreate extends Component {
           onChangeText={content => this.setState({ content })}
           value={this.state.content}
         />
+        <Text>{this.state.errors}</Text>
         <Button title="Publish" onPress={() => this.publishPost()} />
       </View>
     );

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FlatList, View, Text, Image } from "react-native";
+import { withNavigation } from "react-navigation";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
 import axios from "axios";
 import styles from "../components/StyleSheet";
@@ -21,8 +22,16 @@ class Posts extends Component {
   }
 
   render() {
+    const newPost = this.props.navigation.getParam("newPost", false);
+    if (newPost) {
+      axios.get("http://capstone.tyler.fish/api/posts").then(response => {
+        const postsData = response.data;
+        this.setState({ posts: postsData });
+      });
+    }
     return (
       <View style={{ flex: 1 }}>
+        <Text>{newPost}</Text>
         <FlatList
           style={{ width: "100%" }}
           data={this.state.posts}
