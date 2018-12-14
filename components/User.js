@@ -8,14 +8,22 @@ class User extends Component {
   render() {
     const fullName =
       this.props.user.first_name + " " + this.props.user.last_name;
+    let cohortName = "No Cohort";
+    if (this.props.user.cohort != undefined) {
+      cohortName = this.props.user.cohort.name;
+    }
     return (
       <ListItem
         title={fullName}
-        subtitle={this.props.user.email}
+        subtitle={cohortName}
         subtitleStyle={{ color: "gray" }}
         chevron={true}
         bottomDivider={true}
-        onPress={() => this.props.navigation.navigate("UserShow")}
+        onPress={() =>
+          this.props.navigation.navigate("UserShow", {
+            userId: this.props.user.id
+          })
+        }
       />
     );
   }
