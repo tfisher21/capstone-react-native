@@ -60,8 +60,16 @@ class UserShow extends Component {
             maxHeight: 25
           }}
         >
-          <Icon name="linkedin-square" type="font-awesome" />
-          <Icon name="github-square" type="font-awesome" />
+          <Icon
+            name="linkedin-square"
+            type="font-awesome"
+            containerStyle={{ paddingRight: 2 }}
+          />
+          <Icon
+            name="github-square"
+            type="font-awesome"
+            containerStyle={{ paddingLeft: 2 }}
+          />
         </View>
         <Avatar
           size="xlarge"
