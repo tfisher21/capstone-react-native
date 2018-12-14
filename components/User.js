@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
+import { withNavigation } from "react-navigation";
 import { ListItem } from "react-native-elements";
 import styles from "./StyleSheet.js";
 
-export default class User extends Component {
+class User extends Component {
   render() {
     const fullName =
       this.props.user.first_name + " " + this.props.user.last_name;
@@ -14,7 +15,10 @@ export default class User extends Component {
         subtitleStyle={{ color: "gray" }}
         chevron={true}
         bottomDivider={true}
+        onPress={() => this.props.navigation.navigate("UserShow")}
       />
     );
   }
 }
+
+export default withNavigation(User);

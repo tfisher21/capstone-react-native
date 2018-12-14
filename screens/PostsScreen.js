@@ -27,26 +27,34 @@ class Posts extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://capstone.tyler.fish/api/posts").then(response => {
-      const postsData = response.data;
-      this.setState({
-        allPosts: postsData,
-        allPostsCount: response.data.length
-      });
-
-      axios
-        .get("http://capstone.tyler.fish/api/posts", {
-          params: {
-            sort_by_cohort: true
-          }
-        })
-        .then(response => {
-          this.setState({
-            cohortPosts: response.data,
-            cohortPostsCount: response.data.length
-          });
+    axios
+      .get("http://capstone.tyler.fish/api/posts")
+      .then(response => {
+        const postsData = response.data;
+        this.setState({
+          allPosts: postsData,
+          allPostsCount: response.data.length
         });
-    });
+
+        axios
+          .get("http://capstone.tyler.fish/api/posts", {
+            params: {
+              sort_by_cohort: true
+            }
+          })
+          .then(response => {
+            this.setState({
+              cohortPosts: response.data,
+              cohortPostsCount: response.data.length
+            });
+          })
+          .catch(error => {
+            this.setState({ selectedIndex: 1 });
+          });
+      })
+      .catch(error => {
+        this.setState({ selectedIndex: 1 });
+      });
   }
 
   updateIndex(selectedIndex) {
