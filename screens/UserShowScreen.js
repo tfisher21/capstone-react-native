@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, FlatList, ScrollView } from "react-native";
 import { withNavigation } from "react-navigation";
-import { Text, Divider, Avatar, Icon } from "react-native-elements";
+import {
+  Text,
+  Divider,
+  Avatar,
+  Icon,
+  Card,
+  Button
+} from "react-native-elements";
 import axios from "axios";
 
 class UserShow extends Component {
@@ -84,9 +91,53 @@ class UserShow extends Component {
         <View style={{ height: 10 }} />
         <Text>{this.state.user.email}</Text>
         <Text style={{ color: "red" }}>{employment}</Text>
+        <ScrollView>
+          <FlatList
+            style={{ width: "100%" }}
+            data={this.state.user.posts}
+            keyExtractor={(item, index) => item.id.toString()}
+            renderItem={({ item }) => {
+              return <Post post={item} />;
+            }}
+          />
+        </ScrollView>
       </View>
     );
   }
 }
 
 export default withNavigation(UserShow);
+
+class Post extends Component {
+  render() {
+    let content = this.props.post.content;
+    if (content.length > 80) {
+      content = content.slice(0, 77) + "...";
+    }
+    return (
+      <Card
+        title={this.props.post.title}
+        image={require("../assets/jsheader.jpg")}
+      >
+        <Text style={{ marginBottom: 10 }}>{content}</Text>
+        <Button
+          icon={<Icon name="list" color="#ffffff" />}
+          iconRight={true}
+          backgroundColor="#03A9F4"
+          buttonStyle={{
+            borderRadius: 0,
+            marginLeft: 0,
+            marginRight: 0,
+            marginBottom: 0
+          }}
+          title={"Full Post"}
+          onPress={() => {
+            this.props.navigation.navigate("PostShow", {
+              postId: this.props.post.id
+            });
+          }}
+        />
+      </Card>
+    );
+  }
+}
