@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View } from "react-native";
 import { withNavigation } from "react-navigation";
-import { Text, Divider, Avatar } from "react-native-elements";
+import { Text, Divider, Avatar, Icon } from "react-native-elements";
 import axios from "axios";
 
 class UserShow extends Component {
@@ -51,9 +51,18 @@ class UserShow extends Component {
           marginBottom: 25,
           flex: 1,
           alignItems: "center"
-          // justifyContent: "center"
         }}
       >
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            maxHeight: 25
+          }}
+        >
+          <Icon name="linkedin-square" type="font-awesome" />
+          <Icon name="github-square" type="font-awesome" />
+        </View>
         <Avatar
           size="xlarge"
           rounded={true}
