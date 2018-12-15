@@ -14,6 +14,11 @@ class User extends Component {
     }
     return (
       <ListItem
+        leftAvatar={{
+          size: "small",
+          rounded: true,
+          source: require("../assets/tahani.jpg")
+        }}
         title={fullName}
         subtitle={cohortName}
         subtitleStyle={{ color: "gray" }}
