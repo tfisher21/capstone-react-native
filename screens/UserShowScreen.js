@@ -117,7 +117,7 @@ class UserShow extends Component {
           type="font-awesome"
           color="#00592D"
           onPress={() => {
-            this.coffeeInvite();
+            this.props.navigation.navigate("CoffeeInvite");
           }}
           containerStyle={{ position: "absolute", right: 0 }}
         />

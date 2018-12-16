@@ -11,11 +11,13 @@ import LoginScreen from "./screens/LoginScreen";
 import Posts from "./screens/PostsScreen";
 import PostShow from "./screens/PostsShowScreen";
 import PostCreate from "./screens/PostCreateScreen";
+import CoffeeInvite from "./screens/CoffeeInvite";
 
 const PostsStack = createStackNavigator({
   PostIndex: Posts,
   PostShow: PostShow,
-  PostCreate: PostCreate
+  PostCreate: PostCreate,
+  CoffeeInvite: CoffeeInvite
 });
 
 const UsersStack = createStackNavigator({
