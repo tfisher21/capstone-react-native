@@ -22,7 +22,9 @@ export default class Users extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View
+      // style={styles.container}
+      >
         <FlatList
           style={{ width: "100%" }}
           data={this.state.users}

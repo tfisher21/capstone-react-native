@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, FlatList, ScrollView } from "react-native";
+import { View, FlatList, ScrollView, Linking } from "react-native";
 import { withNavigation } from "react-navigation";
 import {
   Text,
@@ -38,6 +38,11 @@ class UserShow extends Component {
       });
   }
 
+  coffeeInvite() {
+    console.log("Coffee!");
+    axios.get("http://capstone.tyler.fish/api/sms/send");
+  }
+
   render() {
     const fullName =
       this.state.user.first_name + " " + this.state.user.last_name;
@@ -54,8 +59,8 @@ class UserShow extends Component {
     return (
       <View
         style={{
-          marginTop: 50,
-          marginBottom: 25,
+          marginTop: 10,
+          // marginBottom: 25,
           flex: 1,
           alignItems: "center"
         }}
@@ -64,18 +69,23 @@ class UserShow extends Component {
           style={{
             flex: 1,
             flexDirection: "row",
-            maxHeight: 25
+            maxHeight: 25,
+            minHeight: 25
           }}
         >
           <Icon
             name="linkedin-square"
             type="font-awesome"
             containerStyle={{ paddingRight: 2 }}
+            onPress={() =>
+              Linking.openURL("https://www.linkedin.com/in/tylerfisher1/")
+            }
           />
           <Icon
             name="github-square"
             type="font-awesome"
             containerStyle={{ paddingLeft: 2 }}
+            onPress={() => Linking.openURL("https://www.github.com/tfisher21")}
           />
         </View>
         <Avatar
@@ -91,16 +101,26 @@ class UserShow extends Component {
         <View style={{ height: 10 }} />
         <Text>{this.state.user.email}</Text>
         <Text style={{ color: "red" }}>{employment}</Text>
-        <ScrollView>
-          <FlatList
-            style={{ width: "100%" }}
-            data={this.state.user.posts}
-            keyExtractor={(item, index) => item.id.toString()}
-            renderItem={({ item }) => {
-              return <Post post={item} />;
-            }}
-          />
-        </ScrollView>
+        <FlatList
+          style={{ width: "100%" }}
+          data={this.state.user.posts}
+          keyExtractor={(item, index) => item.id.toString()}
+          renderItem={({ item }) => {
+            return <Post post={item} />;
+          }}
+        />
+        <Icon
+          raised
+          reverse
+          name="coffee"
+          iconStyle={{ textAlign: "right" }}
+          type="font-awesome"
+          color="#00592D"
+          onPress={() => {
+            this.coffeeInvite();
+          }}
+          containerStyle={{ position: "absolute", right: 0 }}
+        />
       </View>
     );
   }
