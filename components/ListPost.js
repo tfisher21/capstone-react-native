@@ -38,6 +38,16 @@ class Post extends Component {
             });
           }}
         />
+        <Text
+          style={{
+            marginTop: 2,
+            textAlign: "right",
+            fontSize: 12,
+            color: "gray"
+          }}
+        >
+          {this.props.post.author}
+        </Text>
       </Card>
     );
   }
