@@ -13,20 +13,20 @@ class Post extends Component {
     return (
       <Card
         title={this.props.post.title}
-        titleStyle={{ color: "gray" }}
+        titleStyle={{ color: "orange" }}
         image={require("../assets/jsheader.jpg")}
         style={{ margin: 0, padding: 0 }}
       >
         <Text style={{ marginBottom: 10, color: "gray" }}>{content}</Text>
         <Button
-          icon={<Icon name="list" color="#fff" />}
+          icon={<Icon name="list" color="white" />}
           iconRight={true}
           buttonStyle={{
             borderRadius: 0,
             marginLeft: 0,
             marginRight: 0,
             marginBottom: 0,
-            backgroundColor: "orange"
+            backgroundColor: "gray"
           }}
           title={
             "Full Post + Comments (" +

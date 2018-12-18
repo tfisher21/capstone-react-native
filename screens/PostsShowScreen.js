@@ -77,32 +77,42 @@ class PostShow extends Component {
           <View>
             <ListItem
               title={this.state.post.title}
-              titleStyle={{ fontSize: 28 }}
+              titleStyle={{ fontSize: 28, color: "orange" }}
               subtitle={this.state.post.user}
               subtitleStyle={{ color: "gray" }}
               rightElement={
                 <Icon
                   raised
+                  reverse
                   name="message"
+                  iconStyle={{ textAlign: "right", color: "white" }}
                   type="entypo"
-                  //onPress={() => }
+                  // onPress={() => {}}
+                  containerStyle={{
+                    position: "absolute",
+                    bottom: 0,
+                    right: 0
+                  }}
+                  color="orange"
                 />
               }
             />
           </View>
           <View
             style={{
-              borderBottomWidth: "1px",
-              borderBottomColor: "gray",
-              paddingLeft: "3%",
-              paddingRight: "3%",
-              paddingBottom: "1%"
+              flex: 1,
+              justifyContent: "flex-start",
+              marginLeft: 10,
+              marginRight: 10,
+              paddingBottom: 10,
+              borderBottomWidth: 1,
+              borderBottomColor: "gray"
             }}
           >
-            <Text>{this.state.post.content}</Text>
+            <Text style={{ color: "gray" }}>{this.state.post.content}</Text>
           </View>
-          <View style={{ marginBottom: 100 }}>
-            <Text style={{ paddingLeft: "3%" }} h4>
+          <View style={{ margin: 10, flex: 1, justifyContent: "flex-start" }}>
+            <Text style={{ color: "orange" }} h4>
               Comments
             </Text>
             <FlatList
@@ -116,34 +126,54 @@ class PostShow extends Component {
                 return (
                   <ListItem
                     title={item.content}
+                    titleStyle={{ color: "gray" }}
                     subtitle={item.author + "\n" + commentCAFormat}
-                    subtitleStyle={{ color: "gray", textAlign: "right" }}
+                    subtitleStyle={{ color: "#ffab40", textAlign: "right" }}
                     bottomDivider={true}
                   />
                 );
               }}
             />
-            <View style={{ marginTop: 25, flex: 1, alignItems: "center" }}>
+            <View
+              style={{
+                margin: 10,
+                marginBottom: 50,
+                flex: 1
+              }}
+            >
               <Input
                 multiline={true}
                 autoCapitalize="none"
+                label="Anything to add?"
+                labelStyle={{ opacity: 0.7, color: "gray" }}
+                containerStyle={{
+                  borderWidth: 1,
+                  borderColor: "gray",
+                  height: "100%",
+                  alignSelf: "center"
+                }}
                 inputContainerStyle={{
                   borderBottomWidth: 0,
-                  backgroundColor: "#F0F0F0",
-                  borderRadius: 25,
-                  height: "80%"
+                  height: "95%"
                 }}
                 inputStyle={{
-                  height: "95%",
-                  // height: null,
-                  justifyContent: "flex-start"
+                  height: "100%",
+                  color: "gray"
                 }}
-                containerStyle={{ height: "70%" }}
                 onChangeText={content => this.setState({ content })}
                 value={this.state.content}
+                selectionColor="orange"
               />
               <Text>{this.state.errors}</Text>
-              <Button title="Publish" onPress={() => this.publishComment()} />
+              <Button
+                title="Publish"
+                onPress={() => this.publishComment()}
+                buttonStyle={{
+                  width: "50%",
+                  borderRadius: 0,
+                  backgroundColor: "orange"
+                }}
+              />
             </View>
           </View>
         </ScrollView>

@@ -60,8 +60,10 @@ class LoginScreen extends Component {
           inputContainerStyle={{
             borderBottomWidth: 0
           }}
+          inputStyle={{ color: "gray" }}
           label="Email Address"
           labelStyle={{ opacity: 0.7, color: "gray" }}
+          selectionColor="orange"
         />
         <Input
           autoCapitalize="none"
@@ -73,8 +75,10 @@ class LoginScreen extends Component {
             borderColor: "gray"
           }}
           inputContainerStyle={{ borderBottomWidth: 0 }}
+          inputStyle={{ color: "gray" }}
           label="Password"
           labelStyle={{ opacity: 0.7, color: "gray" }}
+          selectionColor="orange"
         />
         <Button
           title="Login"

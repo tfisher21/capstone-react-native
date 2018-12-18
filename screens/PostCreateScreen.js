@@ -62,8 +62,10 @@ class PostCreate extends Component {
           inputContainerStyle={{
             borderBottomWidth: 0
           }}
+          inputStyle={{ color: "gray" }}
           onChangeText={title => this.setState({ title })}
           value={this.state.title}
+          selectionColor="orange"
         />
         <Input
           multiline={true}
@@ -80,10 +82,12 @@ class PostCreate extends Component {
             height: "95%"
           }}
           inputStyle={{
-            height: "100%"
+            height: "100%",
+            color: "gray"
           }}
           onChangeText={content => this.setState({ content })}
           value={this.state.content}
+          selectionColor="orange"
         />
         <Text>{this.state.errors}</Text>
         <Button
