@@ -41,8 +41,10 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <View>
-        <Text h4>Login to Actualize.Social</Text>
+      <View style={{ flex: 1 }}>
+        <Text style={{ alignSelf: "center" }} h4>
+          Login to Actualize.Social
+        </Text>
         <Input
           placeholder="email"
           autoCapitalize="none"

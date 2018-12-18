@@ -61,7 +61,6 @@ class CoffeeInvite extends Component {
       name: name,
       address: address
     };
-    console.log(params);
     axios
       .post("http://capstone.tyler.fish/api/sms/send", params)
       .catch(error => {

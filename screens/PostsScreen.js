@@ -98,7 +98,7 @@ class Posts extends Component {
     }
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, margin: 0, padding: 0 }}>
         <ButtonGroup
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}
@@ -108,7 +108,7 @@ class Posts extends Component {
           innerBorderStyle={{ width: 0 }}
         />
         <FlatList
-          style={{ width: "100%" }}
+          style={{ margin: 0, padding: 0 }}
           data={postView}
           keyExtractor={(item, index) => item.id.toString()}
           renderItem={({ item }) => {
@@ -117,13 +117,19 @@ class Posts extends Component {
         />
         <Icon
           raised
+          reverse
           name="edit"
           iconStyle={{ textAlign: "right" }}
           type="entypo"
           onPress={() => {
             this.props.navigation.navigate("PostCreate");
           }}
-          containerStyle={{ position: "absolute", bottom: 0, right: 0 }}
+          containerStyle={{
+            position: "absolute",
+            bottom: 0,
+            right: 0
+          }}
+          color="#f50"
         />
       </View>
     );

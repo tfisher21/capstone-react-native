@@ -14,6 +14,7 @@ class Post extends Component {
       <Card
         title={this.props.post.title}
         image={require("../assets/jsheader.jpg")}
+        style={{ margin: 0, padding: 0 }}
       >
         <Text style={{ marginBottom: 10 }}>{content}</Text>
         <Button
