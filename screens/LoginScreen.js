@@ -41,33 +41,46 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Text style={{ alignSelf: "center" }} h4>
-          Login to Actualize.Social
+      <View style={{ flex: 1, justifyContent: "flex-start", margin: 30 }}>
+        <Text style={{ color: "orange" }} h1>
+          Login to
+        </Text>
+        <Text style={{ marginBottom: 25, color: "gray" }} h1>
+          Actualize.Social
         </Text>
         <Input
-          placeholder="email"
           autoCapitalize="none"
           onChangeText={email => this.setState({ email })}
           value={this.state.email}
+          containerStyle={{
+            borderWidth: 1,
+            borderBottomWidth: 0,
+            borderColor: "gray"
+          }}
+          inputContainerStyle={{ borderBottomWidth: 0 }}
+          label="Email Address"
+          labelStyle={{ opacity: 0.7, color: "gray" }}
         />
         <Input
-          placeholder="password"
           autoCapitalize="none"
           secureTextEntry={true}
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
+          containerStyle={{
+            borderWidth: 1,
+            borderColor: "gray"
+          }}
+          inputContainerStyle={{ borderBottomWidth: 0 }}
+          label="Password"
+          labelStyle={{ opacity: 0.7, color: "gray" }}
         />
         <Button
           title="Login"
           buttonStyle={{
-            marginTop: 20,
-            marginLeft: 300,
-            width: 70,
-            height: 45,
-            borderColor: "transparent",
-            borderWidth: 0,
-            borderRadius: 10
+            marginTop: 25,
+            width: "50%",
+            borderRadius: 0,
+            backgroundColor: "orange"
           }}
           onPress={() => this.loginUser()}
         />
