@@ -103,9 +103,11 @@ class Posts extends Component {
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}
           buttons={buttons}
-          buttonStyle={{ borderRadius: 20 }}
-          containerStyle={{ borderWidth: 0 }}
-          innerBorderStyle={{ width: 0 }}
+          buttonStyle={{ borderRadius: 0 }}
+          containerStyle={{ borderWidth: 0, borderRadius: 0 }}
+          // innerBorderStyle={{ width: 0 }}
+          selectedButtonStyle={{ backgroundColor: "orange" }}
+          textStyle={{ color: "gray" }}
         />
         <FlatList
           style={{ margin: 0, padding: 0 }}
@@ -119,7 +121,7 @@ class Posts extends Component {
           raised
           reverse
           name="edit"
-          iconStyle={{ textAlign: "right" }}
+          iconStyle={{ textAlign: "right", color: "white" }}
           type="entypo"
           onPress={() => {
             this.props.navigation.navigate("PostCreate");
@@ -129,7 +131,7 @@ class Posts extends Component {
             bottom: 0,
             right: 0
           }}
-          color="#f50"
+          color="#7e57c2"
         />
       </View>
     );
