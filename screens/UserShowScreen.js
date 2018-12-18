@@ -91,7 +91,7 @@ class UserShow extends Component {
         <Avatar
           size="xlarge"
           rounded={true}
-          source={require("../assets/tahani.jpg")}
+          source={{ uri: this.state.user.avatar }}
         />
         <Text h2>{fullName}</Text>
         <Text style={{ fontSize: 16 }}>

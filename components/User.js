@@ -17,7 +17,7 @@ class User extends Component {
         leftAvatar={{
           size: "small",
           rounded: true,
-          source: require("../assets/tahani.jpg")
+          source: this.props.user.avatar && { uri: this.props.user.avatar }
         }}
         title={fullName}
         subtitle={cohortName}
