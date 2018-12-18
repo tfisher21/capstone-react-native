@@ -57,7 +57,9 @@ class LoginScreen extends Component {
             borderBottomWidth: 0,
             borderColor: "gray"
           }}
-          inputContainerStyle={{ borderBottomWidth: 0 }}
+          inputContainerStyle={{
+            borderBottomWidth: 0
+          }}
           label="Email Address"
           labelStyle={{ opacity: 0.7, color: "gray" }}
         />

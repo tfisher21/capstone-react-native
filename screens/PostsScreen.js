@@ -131,7 +131,7 @@ class Posts extends Component {
             bottom: 0,
             right: 0
           }}
-          color="#7e57c2"
+          color="#4caf50"
         />
       </View>
     );

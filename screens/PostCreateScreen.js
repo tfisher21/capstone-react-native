@@ -43,19 +43,25 @@ class PostCreate extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center" }}>
-        <Text style={{ marginTop: 25, color: "#86939e" }} h4>
-          New Post
+      <View style={{ flex: 1, justifyContent: "flex-start", margin: 30 }}>
+        <Text style={{ marginBottom: 25, color: "orange" }} h1>
+          {"New "}
+          <Text style={{ color: "gray" }} h1>
+            Post
+          </Text>
         </Text>
         <Input
           autoCapitalize="none"
           label="Title"
-          inputContainerStyle={{
+          labelStyle={{ opacity: 0.7, color: "gray" }}
+          containerStyle={{
+            borderWidth: 1,
             borderBottomWidth: 0,
-            backgroundColor: "#F0F0F0",
-            borderRadius: 25
+            borderColor: "gray"
           }}
-          containerStyle={{ marginBottom: 15 }}
+          inputContainerStyle={{
+            borderBottomWidth: 0
+          }}
           onChangeText={title => this.setState({ title })}
           value={this.state.title}
         />
@@ -63,23 +69,33 @@ class PostCreate extends Component {
           multiline={true}
           autoCapitalize="none"
           label="What are your thoughts?"
+          labelStyle={{ opacity: 0.7, color: "gray" }}
+          containerStyle={{
+            borderWidth: 1,
+            borderColor: "gray",
+            height: "60%"
+          }}
           inputContainerStyle={{
             borderBottomWidth: 0,
-            backgroundColor: "#F0F0F0",
-            borderRadius: 25,
-            height: "80%"
+            height: "95%"
           }}
           inputStyle={{
-            height: "95%",
-            // height: null,
-            justifyContent: "flex-start"
+            height: "100%"
           }}
-          containerStyle={{ height: "70%" }}
           onChangeText={content => this.setState({ content })}
           value={this.state.content}
         />
         <Text>{this.state.errors}</Text>
-        <Button title="Publish" onPress={() => this.publishPost()} />
+        <Button
+          title="Publish"
+          onPress={() => this.publishPost()}
+          buttonStyle={{
+            marginTop: 25,
+            width: "50%",
+            borderRadius: 0,
+            backgroundColor: "orange"
+          }}
+        />
       </View>
     );
   }
