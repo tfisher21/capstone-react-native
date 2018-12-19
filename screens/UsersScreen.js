@@ -13,6 +13,13 @@ export default class Users extends Component {
     };
   }
 
+  static navigationOptions = {
+    title: "Users",
+    headerBackTitleStyle: {
+      color: "#ff9800"
+    }
+  };
+
   componentDidMount() {
     axios.get("http://capstone.tyler.fish/api/users").then(response => {
       const usersData = response.data;

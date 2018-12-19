@@ -21,6 +21,13 @@ class UserShow extends Component {
     };
   }
 
+  static navigationOptions = {
+    title: "User",
+    headerBackTitleStyle: {
+      color: "#ff9800"
+    }
+  };
+
   componentDidMount() {
     this.setState({
       userId: this.props.navigation.getParam("userId")
@@ -70,13 +77,15 @@ class UserShow extends Component {
             flex: 1,
             flexDirection: "row",
             maxHeight: 25,
-            minHeight: 25
+            minHeight: 25,
+            marginBottom: 5
           }}
         >
           <Icon
             name="linkedin-square"
             type="font-awesome"
             containerStyle={{ paddingRight: 2 }}
+            color="#424242"
             onPress={() =>
               Linking.openURL("https://www.linkedin.com/in/tylerfisher1/")
             }
@@ -84,6 +93,7 @@ class UserShow extends Component {
           <Icon
             name="github-square"
             type="font-awesome"
+            color="#424242"
             containerStyle={{ paddingLeft: 2 }}
             onPress={() => Linking.openURL("https://www.github.com/tfisher21")}
           />
@@ -92,15 +102,21 @@ class UserShow extends Component {
           size="xlarge"
           rounded={true}
           source={{ uri: this.state.user.avatar }}
+          containerStyle={{ borderWidth: 1, borderColor: "#9e9e9e" }}
         />
-        <Text h2>{fullName}</Text>
-        <Text style={{ fontSize: 16 }}>
+        <Text style={{ color: "#ff9800" }} h2>
+          {fullName}
+        </Text>
+        <Text style={{ fontSize: 16, color: "#9e9e9e" }}>
           Member of
-          <Text style={{ fontStyle: "italic" }}> {cohortName}</Text>
+          <Text style={{ fontStyle: "italic", color: "#212121" }}>
+            {" "}
+            {cohortName}
+          </Text>
         </Text>
         <View style={{ height: 10 }} />
-        <Text>{this.state.user.email}</Text>
-        <Text style={{ color: "red" }}>{employment}</Text>
+        <Text style={{ color: "#9e9e9e" }}>{this.state.user.email}</Text>
+        <Text style={{ color: "#212121" }}>{employment}</Text>
         <FlatList
           style={{ width: "100%" }}
           data={this.state.user.posts}
@@ -115,7 +131,7 @@ class UserShow extends Component {
           name="coffee"
           iconStyle={{ textAlign: "right" }}
           type="font-awesome"
-          color="#00592D"
+          color="#ff9800"
           onPress={() => {
             this.props.navigation.navigate("CoffeeInvite");
           }}

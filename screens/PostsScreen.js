@@ -26,6 +26,13 @@ class Posts extends Component {
     this.updateIndex = this.updateIndex.bind(this);
   }
 
+  static navigationOptions = {
+    title: "Posts",
+    headerBackTitleStyle: {
+      color: "#ff9800"
+    }
+  };
+
   componentDidMount() {
     axios
       .get("http://capstone.tyler.fish/api/posts")
@@ -105,9 +112,9 @@ class Posts extends Component {
           buttons={buttons}
           buttonStyle={{ borderRadius: 0 }}
           containerStyle={{ borderWidth: 0, borderRadius: 0 }}
-          // innerBorderStyle={{ width: 0 }}
           selectedButtonStyle={{ backgroundColor: "orange" }}
-          textStyle={{ color: "gray" }}
+          textStyle={{ color: "#9e9e9e" }}
+          innerBorderStyle={{ width: 0 }}
         />
         <FlatList
           style={{ margin: 0, padding: 0 }}

@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Dimensions, FlatList, ScrollView, View, Image } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  ScrollView,
+  View,
+  Image,
+  KeyboardAvoidingView
+} from "react-native";
 import {
   Card,
   Text,
@@ -25,6 +32,13 @@ class PostCreate extends Component {
     };
   }
 
+  static navigationOptions = {
+    title: "New Post",
+    headerBackTitleStyle: {
+      color: "#ff9800"
+    }
+  };
+
   publishPost() {
     var params = {
       title: this.state.title,
@@ -43,7 +57,15 @@ class PostCreate extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: "flex-start", margin: 30 }}>
+      <KeyboardAvoidingView
+        style={{
+          flex: 1,
+          justifyContent: "flex-start",
+          margin: 30
+        }}
+        behavior="padding"
+        keyboardVerticalOffset={160}
+      >
         <Text style={{ marginBottom: 25, color: "orange" }} h1>
           {"New "}
           <Text style={{ color: "gray" }} h1>
@@ -100,7 +122,8 @@ class PostCreate extends Component {
             backgroundColor: "orange"
           }}
         />
-      </View>
+        <View style={{ height: 60 }} />
+      </KeyboardAvoidingView>
     );
   }
 }

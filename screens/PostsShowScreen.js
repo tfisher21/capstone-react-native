@@ -30,6 +30,13 @@ class PostShow extends Component {
     };
   }
 
+  static navigationOptions = {
+    title: "Post",
+    headerBackTitleStyle: {
+      color: "#ff9800"
+    }
+  };
+
   componentDidMount() {
     const postId = this.props.navigation.getParam("postId");
     const request = "http://capstone.tyler.fish/api/posts/" + postId;
@@ -68,7 +75,7 @@ class PostShow extends Component {
     const imageWidth = dimensions.width;
 
     return (
-      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={40}>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={80}>
         <ScrollView stickyHeaderIndices={[1]}>
           <Image
             source={require("../assets/jsheader.jpg")}
@@ -149,12 +156,12 @@ class PostShow extends Component {
                 containerStyle={{
                   borderWidth: 1,
                   borderColor: "gray",
-                  height: "100%",
+                  height: "70%",
                   alignSelf: "center"
                 }}
                 inputContainerStyle={{
                   borderBottomWidth: 0,
-                  height: "95%"
+                  height: "100%"
                 }}
                 inputStyle={{
                   height: "100%",

@@ -17,11 +17,14 @@ class User extends Component {
         leftAvatar={{
           size: "small",
           rounded: true,
+          borderWidth: 1,
+          borderColor: "#9e9e9e",
           source: this.props.user.avatar && { uri: this.props.user.avatar }
         }}
         title={fullName}
+        titleStyle={{ color: "#ff9800" }}
         subtitle={cohortName}
-        subtitleStyle={{ color: "gray" }}
+        subtitleStyle={{ color: "#9e9e9e" }}
         chevron={true}
         bottomDivider={true}
         onPress={() =>

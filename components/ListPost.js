@@ -26,7 +26,7 @@ class Post extends Component {
             marginLeft: 0,
             marginRight: 0,
             marginBottom: 0,
-            backgroundColor: "gray"
+            backgroundColor: "#9e9e9e"
           }}
           title={
             "Full Post + Comments (" +
