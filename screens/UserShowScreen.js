@@ -153,18 +153,19 @@ class Post extends Component {
     return (
       <Card
         title={this.props.post.title}
+        titleStyle={{ color: "orange" }}
         image={require("../assets/jsheader.jpg")}
       >
-        <Text style={{ marginBottom: 10 }}>{content}</Text>
+        <Text style={{ marginBottom: 10, color: "gray" }}>{content}</Text>
         <Button
           icon={<Icon name="list" color="#ffffff" />}
           iconRight={true}
-          backgroundColor="#03A9F4"
           buttonStyle={{
             borderRadius: 0,
             marginLeft: 0,
             marginRight: 0,
-            marginBottom: 0
+            marginBottom: 0,
+            backgroundColor: "#9e9e9e"
           }}
           title={"Full Post"}
           onPress={() => {
