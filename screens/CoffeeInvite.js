@@ -6,8 +6,7 @@ import { MapView } from "expo";
 import axios from "axios";
 
 const Marker = MapView.Marker;
-const YELP_API_KEY =
-  "zbHmCS0Yv2hlMbzZPOGvLEPGAgurBKpiD7liFWJB3BSavH9HMN0Ge2yNW1IzaydR9TUJiQBlrD-BjL2dEEDqEnZmloe9z3PMtn_wYy10GvdxmpBX4arn9gZniOQWXHYx";
+const YELP_API_KEY; // Removed for public repository.
 
 class CoffeeInvite extends Component {
   constructor(props) {
